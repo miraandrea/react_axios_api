@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, {useState} from 'react'
+import { NavLink } from 'react-router-dom'
+import { Btn } from '../Btn/Btn'
 
 export const UILogin = () => {
 
@@ -26,7 +28,7 @@ export const UILogin = () => {
             <h1>Login</h1>
             <input onChange={e=> setUserName(e.target.value)} type="text" name="usuario" id="" placeholder='Usuario' />
             <input onChange={e=> setPassword(e.target.value)} type="password" name="password" id="" placeholder='Contraseña' />
-            <button onClick={response}>Inicio</button>
+            <NavLink to='/inicio'><Btn funcionClick={response} texto="Inicio"/></NavLink>
         </form>
     </div>
   )

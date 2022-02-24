@@ -1,22 +1,31 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const UIShow = () => {
 
     const URL = 'https://backend-edw.herokuapp.com/usuarios'
 
-    const[name, setName ] = useState()
-    const[password, setPassword ] = useState()
-    const[userName, setUserName ] = useState()
+    const[name, setName ] = useState([])
+    const[password, setPassword ] = useState(null)
+    const[userName, setUserName ] = useState(null)
 
    
-    axios.get(URL)
-    .then( response => response)
-    .then( data => console.log(data) )
+    useEffect(() =>{
+      axios.get(URL)
+      .then( response => response)
+      .then((data) => {
+        setName(data.name),
+        setPassword(data.password),
+        setUserName(data.username)
+        console.log(data.name);
+      })
+    }, [])
 
   return (
     <div>
-        <p></p>
+        <h1>{name}</h1>
+        <p>{userName}</p>
+        <p>{password}</p>
     </div>
   )
 }
